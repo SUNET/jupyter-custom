@@ -9,4 +9,5 @@ builders:
 docker_name: drive/jupyter-custom
 docker_tags:
   - "latest"
+  - "2023-02-28"
 docker_no_cache: true
