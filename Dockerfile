@@ -8,4 +8,5 @@ RUN wget https://downloads.rclone.org/rclone-current-linux-amd64.deb \
     && dpkg -i rclone-current-linux-amd64.deb && rm rclone-current-linux-amd64.deb
 USER jovyan
 COPY ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
+COPY ./mount.sh /home/jovyan/mount.sh
 RUN pip install git+https://github.com/sciencemesh/cs3api4lab
