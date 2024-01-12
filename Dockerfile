@@ -1,4 +1,4 @@
-FROM jupyter/scipy-notebook:2023-02-28 
+FROM quay.io/jupyter/scipy-notebook:lab-4.0.10  
 USER root
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
   nextcloud-desktop-cmd \
