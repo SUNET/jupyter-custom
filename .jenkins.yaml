@@ -9,5 +9,5 @@ builders:
 docker_name: drive/jupyter-custom
 docker_tags:
   - "latest"
-  - "lab-4.0.10"
+  - "lab-4.0.10-sunet1"
 docker_no_cache: true
