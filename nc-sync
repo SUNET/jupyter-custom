@@ -22,7 +22,7 @@ function get_token {
   if [[ -f "${json_file}" ]]; then
     now=$(date +%s)
     token=$(jq -r '.access_token' "${json_file}")
-    expires_at=$(jq -r '.token_expires' "${json_file}")
+    expires_at=$(jq -r '.token_expires' "${json_file}"| sed 's/\..*//')
     # If the token is expired, we fetch a new one
     if [[ "${expires_at}" -lt ${now} ]]; then
       token=$(refresh_token)
