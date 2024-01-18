@@ -10,7 +10,7 @@ function refresh_token {
   # If json is empty here we are early in the process and should have a fresh token from the environment
   if [[ -z "${json}" ]]; then
     token="${NEXTCLOUD_ACCESS_TOKEN}"
-    json="{ \"access_token\": \"${token}\", \"token_expires\": \"$(date -d "10 min" +%s)\" }" 
+    json="{ \"access_token\": \"${token}\", \"token_expires\": $(date -d "10 min" +%s).0000000 }" 
   fi
   echo "${json}" > "${json_file}"
   token=$(jq -r '.access_token' "${json_file}")
