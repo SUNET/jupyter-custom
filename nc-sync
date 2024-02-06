@@ -2,11 +2,11 @@
 rmdir --ignore-fail-on-non-empty /home/jovyan/work
 workdir='/home/jovyan'
 mkdir -p ${workdir}
-server="https://sunet.drive.test.sunet.se"
+server="https://${NEXTCLOUD_HOST}"
 json_file="${workdir}/.access_token.json"
 
 function refresh_token {
-  json="$(curl --header "Authorization: token ${JUPYTERHUB_API_TOKEN}" https://jupyter.drive.test.sunet.se/services/refresh-token/tokens)"
+  json="$(curl --header "Authorization: token ${JUPYTERHUB_API_TOKEN}" https://${JUPYTER_HOST}/services/refresh-token/tokens)"
   # If json is empty here we are early in the process and should have a fresh token from the environment
   if [[ -z "${json}" ]]; then
     token="${NEXTCLOUD_ACCESS_TOKEN}"
