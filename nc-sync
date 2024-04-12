@@ -3,7 +3,11 @@ rmdir --ignore-fail-on-non-empty /home/jovyan/work
 workdir='/home/jovyan'
 mkdir -p ${workdir}
 server="https://${NEXTCLOUD_HOST}"
-json_file="${workdir}/.access_token.json"
+json_file="/tmp/.access_token.json"
+
+# Remove any old access token files
+old_jsonfile_conflicted_pattern="${workdir}/.access_token{,\ \(*\)}.json"
+eval "rm ${old_jsonfile_conflicted_pattern} 2&> /dev/null"
 
 function refresh_token {
   json="$(curl --header "Authorization: token ${JUPYTERHUB_API_TOKEN}" https://${JUPYTER_HOST}/services/refresh-token/tokens)"
