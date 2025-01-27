@@ -1,4 +1,4 @@
-FROM quay.io/jupyter/scipy-notebook:lab-4.0.10  
+FROM quay.io/jupyter/scipy-notebook:lab-4.3.4  
 USER root
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
   curl \
